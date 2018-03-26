@@ -1,4 +1,11 @@
 var lives = 3;
+var colours = ["red", "blue"];
+
+function Square() {
+    var colourIdx = Math.random() * 2;
+
+    this.colour = colours[colourIdx];
+}
 
 function startGame() {
     lives = 3;
