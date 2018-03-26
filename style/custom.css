@@ -1,15 +1,19 @@
 body {
     background-color: #3a3a3a;
-    position: relative;
 }
+
+html, body {height:100%; margin:0;padding:0}
 
 #title {
     padding: 0.5em;
     font-family: 'Montserrat', sans-serif;
-    position: absolute;
 }
 
 #game {
     color: white;
     text-align: center;
+    padding: 1em;
+}
+
+#startScreen {
 }
