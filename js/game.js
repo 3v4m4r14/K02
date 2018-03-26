@@ -5,12 +5,12 @@ function startGame() {
 }
 
 function gameOver() {
-
+    console.log("GameOver");
 }
 
 function removeLife() {
     if (lives > 0) {
-        lives -= 1;
+        lives--;
     }
     if (lives === 0) {
         gameOver();
