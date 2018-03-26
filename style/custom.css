@@ -1,0 +1,22 @@
+body {
+    background-color: #3a3a3a;
+    position: relative;
+}
+
+#title {
+    padding: 0.5em;
+    font-family: 'Montserrat', sans-serif;
+    position: absolute;
+}
+
+#game {
+    color: white;
+    text-align: center;
+}
+
+#square {
+    border: 1px solid #888;
+    width: 100px;
+    height: 100px;
+    background-color: white;
+}
