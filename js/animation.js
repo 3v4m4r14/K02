@@ -3,6 +3,7 @@ $('#startBtn').click(function () {
         .set('margin-top', '0%')
         .duration('0.5s')
         .end();
+    $('#startBtn').text("RESTART");
 });
 
 
