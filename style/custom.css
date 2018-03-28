@@ -12,12 +12,17 @@ html, body {height:100%; margin:0;padding:0}
 #game {
     color: white;
     text-align: center;
-<<<<<<< HEAD
     padding: 1em;
 }
 
 #startScreen {
-=======
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 15em;
 }
 
 #square {
@@ -25,5 +30,4 @@ html, body {height:100%; margin:0;padding:0}
     width: 100px;
     height: 100px;
     background-color: white;
->>>>>>> 785b477e7f64575b4763093bfe1d2064065f1634
 }
