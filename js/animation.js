@@ -26,3 +26,54 @@ function myMove() {
         .pop().duration('0.2s')
         .end();
 }
+
+function moveDown() {
+    // spawnNew();
+    // move('#square')
+    //     .y(100)
+    //     .duration('0.5s')
+    //     .ease('in')
+    //     .then()
+    //         .y(-20)
+    //         .duration('0.2s')
+    //         .ease('out')
+    //         .then()
+    //             .y(20)
+    //             .duration('0.2s')
+    //             .ease('in')
+    //         .pop()
+    //     .pop()
+    //     .end();
+    move('#mover')
+        .add('margin-top', -100)
+        .duration('0s')
+        .then()
+            .add('margin-top', 100)
+            .duration('0.5s')
+            .ease('in')
+            .then()
+                .add('margin-top', -20)
+                .duration('0.2s')
+                .ease('out')
+                .then()
+                    .add('margin-top', 20)
+                    .duration('0.2s')
+                    .ease('in')
+                .pop()
+            .pop()
+        .pop()
+        .end();
+    spawnNew();
+}
+
+function spawnNew() {
+    var node = document.createElement("div");
+    node.id = "square";
+    var doc = document.getElementById("squareHolder");
+    if (Math.random() > 0.5) { // Placeholder visuals. The color should come from gameplay logic.
+        node.style.backgroundColor = "red";
+    } else {
+        node.style.backgroundColor = "blue";
+    }
+    doc.insertBefore(node, document.getElementById("square"));
+}
