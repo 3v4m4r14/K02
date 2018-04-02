@@ -10,8 +10,9 @@ $('#rightBtn').click(function () {
 });
 
 setInterval(function () {
-    wobblyMaths();
-}, 6000);
+    extraTask();
+
+}, 15000);
 
 function startGame() {
     lives = 3;
@@ -26,6 +27,14 @@ function startGame() {
 function gameOver() {
     console.log("GameOver");
     makeGameInvisible();
+}
+
+function extraTask() {
+    wobblyMaths();
+    setTimeout(function () {
+        $('#mathsScreen').css("visibility", "hidden");
+    }, 7000);
+
 }
 
 function removeLife() {
