@@ -1,9 +1,7 @@
 var lives = 3;
 var score = 0;
 var correctAnswer;
-var colours = ["red", "blue"];
-document.onkeydown = chooseKeyAction;
-
+window.onkeydown = chooseKeyAction;
 $('#leftBtn').click(function () {
     moveLeft();
 });
@@ -11,10 +9,9 @@ $('#rightBtn').click(function () {
     moveRight();
 });
 
-function Square() {
-    var colourIdx = Math.round(Math.random());
-    this.colour = colours[colourIdx];
-}
+setInterval(function () {
+    wobblyMaths();
+}, 6000);
 
 function startGame() {
     lives = 3;

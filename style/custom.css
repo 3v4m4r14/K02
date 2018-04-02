@@ -36,6 +36,7 @@ html, body {
 #mathsScreen {
     /*background-color: whitesmoke;*/
     padding: 1em;
+    visibility: hidden;
 }
 
 #square {

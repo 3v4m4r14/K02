@@ -1,3 +1,5 @@
+const mathsScreenAnimation = 'animated bounceIn';
+
 $('#startBtn').click(function () {
     var startBtn = $('#startBtn');
     if (startBtn.text() === "START") {
@@ -91,4 +93,15 @@ function spawnNew() {
         node.style.backgroundColor = "blue";
     }
     doc.insertBefore(node, document.getElementById("square"));
+}
+
+function wobblyMaths() {
+    var mathsScreen = $('#mathsScreen');
+    mathsScreen.removeClass(mathsScreenAnimation);
+    mathsScreen.css("visibility", "visible");
+
+    setTimeout(function () {
+        mathsScreen.addClass(mathsScreenAnimation);
+    }, 10);
+    console.log("wobbling!");
 }
