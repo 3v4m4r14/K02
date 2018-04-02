@@ -24,35 +24,58 @@
 
 </head>
 <body>
-<div id="game" class="container-fluid">
+<div id="game" class="container">
     <div id="startScreen">
-        <h1 id="title">THE SORTING GAME</h1>
+        <h1 id="title" class="whiteText">THE SORTING GAME</h1>
         <button id="startBtn" class="btn btn-danger btn-lg">START</button>
     </div>
 
-    <h3 id="score" class="whiteText">0</h3>
-
-    <div id="maths">
-        <form>
-            <div class="form-group row justify-content-center">
-                <label id="answerLabel" for="answer" class="col-md-1 col-form-label">Asd</label>
-                <div class="col-md-1">
-                    <input id="answer" class="form-control" type="number">
-                </div>
-                <button id="answerCheckBtn" class="btn btn-primary" type="button">SUBMIT</button>
+    <div id="scoreScreen">
+        <div class="row justify-content-center">
+            <div class="col-md-2">
+                <h3 class="whiteText">SCORE: </h3>
             </div>
-        </form>
+            <div class="col-md-2">
+                <h3 id="score" class="whiteText col">0</h3>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-2">
+                <h3 class="whiteText">LIVES: </h3>
+            </div>
+            <div class="col-md-2">
+                <h3 id="lives" class="whiteText col">3</h3>
+            </div>
+        </div>
+    </div>
+
+    <div id="mathsScreen">
+        <div class="row justify-content-center">
+            <form>
+                <div class="form-group"> <!--justify-content-center-->
+                    <label id="answerLabel" for="answer" class="whiteText">Asd</label>
+                    <input id="answer" class="form-control" type="number">
+                    <!--<button id="answerCheckBtn" class="btn btn-primary" type="button">SUBMIT</button>-->
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="gameScreen">
+        <div class="row justify-content-center">
+            <div id="leftBtn" class="triangle-left col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div id="rightBtn" class="triangle-right col-md-2"></div>
+        </div>
     </div>
 </div>
 
 <div>
     <button onclick="moveDown()" type="button">Click Me</button>
 </div>
-<div class="container">
-    <div id="squareHolder">
-        <div id="mover"></div>
-        <div id="square"></div>
-    </div>
+<div id="squareHolder">
+    <div id="mover"></div>
+    <div id="square"></div>
 </div>
 
 

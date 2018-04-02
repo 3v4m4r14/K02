@@ -13,6 +13,7 @@ function startGame() {
     lives = 3;
     score = 0;
     correctAnswer = getRandomMathOperation();
+    makeGameVisible();
     $('#answerCheckBtn').click(function () {
         checkAnswer();
     });
@@ -20,6 +21,7 @@ function startGame() {
 
 function gameOver() {
     console.log("GameOver");
+    makeGameInvisible();
 }
 
 function removeLife() {
@@ -50,7 +52,7 @@ function checkAnswer() {
         score += correctAnswer;
     } else {
         score -= correctAnswer;
-        removeLife();
+        updateLives();
     }
     updateScore();
     emptyAnswerInputBox();
@@ -76,6 +78,19 @@ function updateScore() {
     $('#score').text("" + score);
 }
 
+function updateLives() {
+    removeLife();
+    $('#lives').text("" + lives);
+}
+
 function emptyAnswerInputBox() {
     $('#answer').val("");
+}
+
+function makeGameVisible() {
+    $('#scoreScreen').css("visibility", "visible");
+}
+
+function makeGameInvisible() {
+    $('#scoreScreen').css("visibility", "hidden");
 }

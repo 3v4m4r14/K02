@@ -3,10 +3,10 @@ $('#startBtn').click(function () {
     if (startBtn.text() === "START") {
         console.log("Start -> Restart");
         startBtn.text("RESTART");
-        move('#startScreen')
-            .set('margin-top', '0%')
-            .duration('0.5s')
-            .end();
+        // move('#startScreen')
+        //     .set('margin-top', '0%')
+        //     .duration('0.5s')
+        //     .end();
     }
     startGame();
 });
