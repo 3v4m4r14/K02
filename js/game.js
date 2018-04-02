@@ -1,6 +1,7 @@
 var lives = 3;
 var score = 0;
 var correctAnswer;
+var taskInterval = null;
 window.onkeydown = chooseKeyAction;
 $('#leftBtn').click(function () {
     moveLeft();
@@ -10,17 +11,28 @@ $('#rightBtn').click(function () {
 });
 
 function extraTaskInterval() {
-    setInterval(function () {
+    return setInterval(function () {
         extraTask();
-    }, 15000);
+    }, 10000);
+}
+
+function clearExtraTaskInterval() {
+    clearInterval(taskInterval);
+}
+
+function restartExtraTaskInterval() {
+    clearExtraTaskInterval();
+    taskInterval = extraTaskInterval();
+    console.log("restarted interval");
 }
 
 function startGame() {
     lives = 3;
     score = 0;
     correctAnswer = getRandomMathOperation();
-    makeGameVisible();
-    extraTaskInterval();
+    updateStats();
+    showGame();
+    restartExtraTaskInterval();
     $('#answerCheckBtn').click(function () {
         checkAnswer();
     });
@@ -28,14 +40,15 @@ function startGame() {
 
 function gameOver() {
     console.log("GameOver");
-    makeGameInvisible();
+    hideGame();
+    clearExtraTaskInterval();
 }
 
 function extraTask() {
     wobblyMaths();
     setTimeout(function () {
-        $('#mathsScreen').css("visibility", "hidden");
-    }, 7000);
+        hideMaths();
+    }, 5000);
 
 }
 
@@ -67,10 +80,12 @@ function checkAnswer() {
         score += correctAnswer;
     } else {
         score -= correctAnswer;
+        removeLife();
         updateLives();
     }
     updateScore();
     emptyAnswerInputBox();
+    hideMaths();
     correctAnswer = getRandomMathOperation();
 }
 
@@ -94,18 +109,26 @@ function updateScore() {
 }
 
 function updateLives() {
-    removeLife();
     $('#lives').text("" + lives);
+}
+
+function updateStats() {
+    updateLives();
+    updateScore();
 }
 
 function emptyAnswerInputBox() {
     $('#answer').val("");
 }
 
-function makeGameVisible() {
+function showGame() {
     $('#scoreScreen').css("visibility", "visible");
 }
 
-function makeGameInvisible() {
+function hideGame() {
     $('#scoreScreen').css("visibility", "hidden");
+}
+
+function hideMaths() {
+    $('#mathsScreen').css("visibility", "hidden");
 }
