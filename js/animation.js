@@ -2,13 +2,13 @@ $('#startBtn').click(function () {
     var startBtn = $('#startBtn');
     if (startBtn.text() === "START") {
         console.log("Start -> Restart");
-        startGame();
+        startBtn.text("RESTART");
+        move('#startScreen')
+            .set('margin-top', '0%')
+            .duration('0.5s')
+            .end();
     }
-    move('#startScreen')
-        .set('margin-top', '0%')
-        .duration('0.5s')
-        .end();
-    startBtn.text("RESTART");
+    startGame();
 });
 
 
