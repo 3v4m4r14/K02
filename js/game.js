@@ -9,16 +9,18 @@ $('#rightBtn').click(function () {
     moveRight();
 });
 
-setInterval(function () {
-    extraTask();
-
-}, 15000);
+function extraTaskInterval() {
+    setInterval(function () {
+        extraTask();
+    }, 15000);
+}
 
 function startGame() {
     lives = 3;
     score = 0;
     correctAnswer = getRandomMathOperation();
     makeGameVisible();
+    extraTaskInterval();
     $('#answerCheckBtn').click(function () {
         checkAnswer();
     });

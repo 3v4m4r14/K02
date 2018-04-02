@@ -69,8 +69,8 @@ html, body {
     width: 0;
     height: 0;
     border-top: 25px solid transparent;
-    border-left: 25px solid #0325ff;
+    border-left: 25px solid #238aff;
     border-bottom: 25px solid transparent;
-    -webkit-filter: drop-shadow(0 0 10px #0325ff);
-    filter: drop-shadow(0 0 10px #0325ff);
+    -webkit-filter: drop-shadow(0 0 10px #238aff);
+    filter: drop-shadow(0 0 10px #238aff);
 }
