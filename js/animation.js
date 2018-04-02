@@ -1,9 +1,14 @@
 $('#startBtn').click(function () {
+    var startBtn = $('#startBtn');
+    if (startBtn.text() === "START") {
+        console.log("Start -> Restart");
+        startGame();
+    }
     move('#startScreen')
         .set('margin-top', '0%')
         .duration('0.5s')
         .end();
-    $('#startBtn').text("RESTART");
+    startBtn.text("RESTART");
 });
 
 

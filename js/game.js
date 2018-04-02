@@ -1,5 +1,8 @@
 var lives = 3;
+var score = 0;
+var correctAnswer;
 var colours = ["red", "blue"];
+document.onkeydown = chooseKeyAction;
 
 function Square() {
     var colourIdx = Math.round(Math.random());
@@ -8,6 +11,8 @@ function Square() {
 
 function startGame() {
     lives = 3;
+    score = 0;
+    correctAnswer = undefined;
 }
 
 function gameOver() {
@@ -34,21 +39,40 @@ function getRandomMathOperation() {
     return sum;
 }
 
-function checkAnswer(correctAnswer) {
+function checkAnswer() {
     var userAnswer = $('#answer').val();
 
     console.log(correctAnswer, userAnswer);
 
     if (correctAnswer === parseInt(userAnswer)) {
-        console.log("Correct!");
+        score += correctAnswer;
+        console.log("Correct! Score: " + score);
     } else {
-        console.log("Incorrect");
+        score -= correctAnswer;
+        removeLife();
+        console.log("Incorrect Score: " + score);
+    }
+    correctAnswer = getRandomMathOperation();
+}
+
+function chooseKeyAction(e) {
+    e = e || window.event;
+    switch (e.key) {
+        case "ArrowLeft":
+            moveLeft(); //TODO
+            break;
+        case "ArrowRight":
+            moveRight(); //TODO
+            break;
+        case "Enter":
+            e.preventDefault();
+            checkAnswer();
     }
 }
 
 $('#startBtn').click(function () {
-    var correctAnswer = getRandomMathOperation();
+    correctAnswer = getRandomMathOperation();
     $('#answerCheckBtn').click(function () {
-        checkAnswer(correctAnswer);
+        checkAnswer();
     });
 });
