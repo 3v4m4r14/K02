@@ -71,6 +71,16 @@ function moveDown() {
     spawnNew();
 }
 
+function moveLeft() {
+    //TODO
+    console.log("moving left");
+}
+
+function moveRight() {
+    //TODO
+    console.log("moving right");
+}
+
 function spawnNew() {
     var node = document.createElement("div");
     node.id = "square";

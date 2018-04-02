@@ -4,6 +4,13 @@ var correctAnswer;
 var colours = ["red", "blue"];
 document.onkeydown = chooseKeyAction;
 
+$('#leftBtn').click(function () {
+    moveLeft();
+});
+$('#rightBtn').click(function () {
+    moveRight();
+});
+
 function Square() {
     var colourIdx = Math.round(Math.random());
     this.colour = colours[colourIdx];
@@ -63,10 +70,10 @@ function chooseKeyAction(e) {
     e = e || window.event;
     switch (e.key) {
         case "ArrowLeft":
-            moveLeft(); //TODO
+            moveLeft();
             break;
         case "ArrowRight":
-            moveRight(); //TODO
+            moveRight();
             break;
         case "Enter":
             e.preventDefault();
