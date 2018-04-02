@@ -2,6 +2,7 @@ var lives = 3;
 var score = 0;
 var correctAnswer;
 var taskInterval = null;
+var hasAnswer = false;
 window.onkeydown = chooseKeyAction;
 $('#leftBtn').click(function () {
     moveLeft();
@@ -48,6 +49,10 @@ function extraTask() {
     wobblyMaths();
     setTimeout(function () {
         hideMaths();
+        if (!hasAnswer) {
+            removeLife();
+            updateLives();
+        }
     }, 5000);
 
 }
@@ -74,6 +79,7 @@ function getRandomMathOperation() {
 }
 
 function checkAnswer() {
+    hasAnswer = true;
     var userAnswer = $('#answer').val();
 
     if (correctAnswer === parseInt(userAnswer)) {
@@ -86,6 +92,7 @@ function checkAnswer() {
     updateScore();
     emptyAnswerInputBox();
     hideMaths();
+    hasAnswer = false;
     correctAnswer = getRandomMathOperation();
 }
 
