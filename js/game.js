@@ -12,7 +12,10 @@ function Square() {
 function startGame() {
     lives = 3;
     score = 0;
-    correctAnswer = undefined;
+    correctAnswer = getRandomMathOperation();
+    $('#answerCheckBtn').click(function () {
+        checkAnswer();
+    });
 }
 
 function gameOver() {
@@ -32,6 +35,7 @@ function getRandomMathOperation() {
     var a = Math.floor((Math.random() * 10) + 1);
     var b = Math.floor((Math.random() * 10) + 1);
     var sum = a + b;
+    correctAnswer = sum;
 
     var answerLabel = $('#answerLabel');
     answerLabel.text(a + " + " + b + " = ");
@@ -52,6 +56,7 @@ function checkAnswer() {
         removeLife();
         console.log("Incorrect Score: " + score);
     }
+    updateScore();
     correctAnswer = getRandomMathOperation();
 }
 
@@ -70,9 +75,6 @@ function chooseKeyAction(e) {
     }
 }
 
-$('#startBtn').click(function () {
-    correctAnswer = getRandomMathOperation();
-    $('#answerCheckBtn').click(function () {
-        checkAnswer();
-    });
-});
+function updateScore() {
+    $('#score').text("" + score);
+}
