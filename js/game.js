@@ -33,6 +33,7 @@ function startGame() {
     correctAnswer = getRandomMathOperation();
     updateStats();
     showGame();
+    hideModal();
     restartExtraTaskInterval();
     $('#answerCheckBtn').click(function () {
         checkAnswer();
@@ -43,6 +44,7 @@ function gameOver() {
     console.log("GameOver");
     hideGame();
     clearExtraTaskInterval();
+    showModal();
 }
 
 function extraTask() {
@@ -53,6 +55,7 @@ function extraTask() {
             removeLife();
             updateLives();
         }
+        hasAnswer = false;
     }, 5000);
 
 }
@@ -92,7 +95,6 @@ function checkAnswer() {
     updateScore();
     emptyAnswerInputBox();
     hideMaths();
-    hasAnswer = false;
     correctAnswer = getRandomMathOperation();
 }
 
@@ -138,4 +140,17 @@ function hideGame() {
 
 function hideMaths() {
     $('#mathsScreen').css("visibility", "hidden");
+}
+
+function showModal() {
+    showFinalScore();
+    $('#modalScreen').modal('show');
+}
+
+function hideModal() {
+    $('#modalScreen').modal('hide');
+}
+
+function showFinalScore() {
+    $('#finalScore').text("FINAL SCORE: " + score);
 }

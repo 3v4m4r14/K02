@@ -38,6 +38,26 @@
         </div>
     </div>
 
+    <div id="modalScreen" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">GAME OVER!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="finalScore"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="startGame()">Play again</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="scoreScreen">
         <div class="row">
             <div class="col-md-2">
@@ -57,6 +77,15 @@
         </div>
     </div>
 
+
+    <div id="gameScreen">
+        <div class="row justify-content-center">
+            <div id="leftBtn" class="triangle-left col-md-2"></div>
+            <div class="col-md-4"></div>
+            <div id="rightBtn" class="triangle-right col-md-2"></div>
+        </div>
+    </div>
+
     <div id="mathsScreen">
         <div class="row justify-content-center">
             <form>
@@ -66,14 +95,6 @@
                     <!--<button id="answerCheckBtn" class="btn btn-primary" type="button">SUBMIT</button>-->
                 </div>
             </form>
-        </div>
-    </div>
-
-    <div id="gameScreen">
-        <div class="row justify-content-center">
-            <div id="leftBtn" class="triangle-left col-md-2"></div>
-            <div class="col-md-4"></div>
-            <div id="rightBtn" class="triangle-right col-md-2"></div>
         </div>
     </div>
 </div>
