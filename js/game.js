@@ -46,17 +46,14 @@ function getRandomMathOperation() {
 function checkAnswer() {
     var userAnswer = $('#answer').val();
 
-    console.log(correctAnswer, userAnswer);
-
     if (correctAnswer === parseInt(userAnswer)) {
         score += correctAnswer;
-        console.log("Correct! Score: " + score);
     } else {
         score -= correctAnswer;
         removeLife();
-        console.log("Incorrect Score: " + score);
     }
     updateScore();
+    emptyAnswerInputBox();
     correctAnswer = getRandomMathOperation();
 }
 
@@ -77,4 +74,8 @@ function chooseKeyAction(e) {
 
 function updateScore() {
     $('#score').text("" + score);
+}
+
+function emptyAnswerInputBox() {
+    $('#answer').val("");
 }
