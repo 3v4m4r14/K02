@@ -1,5 +1,5 @@
 const mathsScreenAnimation = 'animated bounceIn';
-
+var squareList = [];
 $('#startBtn').click(function () {
     var startBtn = $('#startBtn');
     if (startBtn.text() === "START") {
@@ -13,58 +13,21 @@ $('#startBtn').click(function () {
     startGame();
 });
 
-
-function myMove() {
-    move('#square')
-        .y(100)
-        .then()
-        .x(100)
-        .then()
-        .y(100)
-        .then()
-        .scale(1.2)
-        .then()
-        .scale(1 / 1.2)
-        .translate(-100, -200)
-        .duration('0s')
-        .pop().duration('0.2s')
-        .pop().duration('0.2s')
-        .pop().duration('0.2s')
-        .pop().duration('0.2s')
-        .end();
-}
-
 function moveDown() {
-    // spawnNew();
-    // move('#square')
-    //     .y(100)
-    //     .duration('0.5s')
-    //     .ease('in')
-    //     .then()
-    //         .y(-20)
-    //         .duration('0.2s')
-    //         .ease('out')
-    //         .then()
-    //             .y(20)
-    //             .duration('0.2s')
-    //             .ease('in')
-    //         .pop()
-    //     .pop()
-    //     .end();
     move('#mover')
-        .add('margin-top', -100)
+        .set('margin-top', '-640px')
         .duration('0s')
         .then()
             .add('margin-top', 100)
-            .duration('0.5s')
+            .duration('0.3s')
             .ease('in')
             .then()
-                .add('margin-top', -20)
-                .duration('0.2s')
+                .add('margin-top', -5)
+                .duration('0.05s')
                 .ease('out')
                 .then()
-                    .add('margin-top', 20)
-                    .duration('0.2s')
+                    .add('margin-top', 5)
+                    .duration('0.05s')
                     .ease('in')
                 .pop()
             .pop()
@@ -74,25 +37,46 @@ function moveDown() {
 }
 
 function moveLeft() {
-    //TODO
+    move(squareList[2])
+        .x(-200)
+        .ease('in')
+        .duration('0.2s')
+        .end();
+    moveDown();
     console.log("moving left");
 }
 
 function moveRight() {
-    //TODO
+    move(squareList[2])
+        .x(200)
+        .ease('in')
+        .duration('0.2s')
+        .end();
+    moveDown();
     console.log("moving right");
 }
 
+function clearSquares() {
+    return;
+    squareList.forEach(element => {
+        console.log("DELETE");
+        delete element.node;
+    });
+    squareList = [];
+}
+
 function spawnNew() {
+    console.log("SPAWN");
     var node = document.createElement("div");
-    node.id = "square";
+    squareList.unshift(node);
+    node.classList.add("square");
     var doc = document.getElementById("squareHolder");
     if (Math.random() > 0.5) { // Placeholder visuals. The color should come from gameplay logic.
-        node.style.backgroundColor = "red";
+        node.classList.add("square-red");
     } else {
-        node.style.backgroundColor = "blue";
+        node.classList.add("square-blue");
     }
-    doc.insertBefore(node, document.getElementById("square"));
+    doc.insertBefore(node, document.getElementsByClassName("square")[0]);
 }
 
 function wobblyMaths() {

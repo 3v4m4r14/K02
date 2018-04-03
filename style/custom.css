@@ -1,3 +1,8 @@
+:root {
+    --red: #ff0000;
+    --blue: #238aff;
+}
+
 body {
     background-color: #3a3a3a;
 }
@@ -39,11 +44,25 @@ html, body {
     visibility: hidden;
 }
 
-#square {
-    border: 1px solid #888;
-    width: 100px;
-    height: 100px;
-    background-color: white;
+.square {
+    width: 90px;
+    height: 90px;
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+
+.square-red {
+    background-color: var(--red);
+    -webkit-filter: drop-shadow(0 0 10px var(--red));
+    filter: drop-shadow(0 0 10px var(--red));
+}
+
+.square-blue {
+    background-color: var(--blue);
+    -webkit-filter: drop-shadow(0 0 10px var(--blue));
+    filter: drop-shadow(0 0 10px var(--blue));
 }
 
 #mover {
@@ -59,18 +78,18 @@ html, body {
     width: 0;
     height: 0;
     border-top: 25px solid transparent;
-    border-right: 25px solid #ff0000;
+    border-right: 25px solid var(--red);
     border-bottom: 25px solid transparent;
-    -webkit-filter: drop-shadow(0 0 10px #cf0000);
-    filter: drop-shadow(0 0 10px #cf0000);
+    -webkit-filter: drop-shadow(0 0 10px var(--red));
+    filter: drop-shadow(0 0 10px var(--red));
 }
 
 .triangle-right {
     width: 0;
     height: 0;
     border-top: 25px solid transparent;
-    border-left: 25px solid #238aff;
+    border-left: 25px solid var(--blue);
     border-bottom: 25px solid transparent;
-    -webkit-filter: drop-shadow(0 0 10px #238aff);
-    filter: drop-shadow(0 0 10px #238aff);
+    -webkit-filter: drop-shadow(0 0 10px var(--blue));
+    filter: drop-shadow(0 0 10px var(--blue));
 }

@@ -35,6 +35,10 @@ function startGame() {
     showGame();
     hideModal();
     restartExtraTaskInterval();
+    clearSquares();
+    for (i = 0; i < 3; i++) {
+        spawnNew();
+    }
     $('#answerCheckBtn').click(function () {
         checkAnswer();
     });
