@@ -36,8 +36,12 @@ function moveDown() {
     spawnNew();
 }
 
-function moveLeft() {
-    move(squareList[2])
+function moveLeft() { // Red side
+    var current = squareList[2];
+    if (!current.classList.contains("square-red")) {
+        removeLife();
+    }
+    move(current)
         .x(-200)
         .ease('in')
         .duration('0.2s')
@@ -46,8 +50,12 @@ function moveLeft() {
     console.log("moving left");
 }
 
-function moveRight() {
-    move(squareList[2])
+function moveRight() { // Blue side
+    var current = squareList[2];
+    if (!current.classList.contains("square-blue")) {
+        removeLife();
+    }
+    move(current)
         .x(200)
         .ease('in')
         .duration('0.2s')
@@ -57,21 +65,19 @@ function moveRight() {
 }
 
 function clearSquares() {
-    return;
+    var holder = document.getElementById("squareHolder");
     squareList.forEach(element => {
-        console.log("DELETE");
-        delete element.node;
+        holder.removeChild(element);
     });
     squareList = [];
 }
 
 function spawnNew() {
-    console.log("SPAWN");
     var node = document.createElement("div");
     squareList.unshift(node);
     node.classList.add("square");
     var doc = document.getElementById("squareHolder");
-    if (Math.random() > 0.5) { // Placeholder visuals. The color should come from gameplay logic.
+    if (Math.random() > 0.5) {
         node.classList.add("square-red");
     } else {
         node.classList.add("square-blue");

@@ -57,7 +57,6 @@ function extraTask() {
         hideMaths();
         if (!hasAnswer) {
             removeLife();
-            updateLives();
         }
         hasAnswer = false;
     }, 5000);
@@ -68,6 +67,7 @@ function removeLife() {
     if (lives > 0) {
         lives--;
     }
+    updateLives();
     if (lives === 0) {
         gameOver();
     }
@@ -94,7 +94,6 @@ function checkAnswer() {
     } else {
         score -= correctAnswer;
         removeLife();
-        updateLives();
     }
     updateScore();
     emptyAnswerInputBox();
