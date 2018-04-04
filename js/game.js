@@ -11,6 +11,9 @@ $('#leftBtn').click(function () {
 $('#rightBtn').click(function () {
     moveRight();
 });
+$('.modal').on('shown.bs.modal', function () {
+    $(this).find('[autofocus]').focus();
+});
 
 function startGame() {
     lives = 3;
@@ -43,9 +46,12 @@ function extraTask() {
         if (!hasAnswer) {
             removeLife();
         }
+        setTimeout(function () {
+            emptyAnswerInputBox();
+            correctAnswer = getRandomMathOperation();
+        }, 1000);
         hasAnswer = false;
     }, 5500);
-
 }
 
 function extraTaskInterval() {
