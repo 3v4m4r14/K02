@@ -96,7 +96,6 @@ function spawnNew() {
 function wobblyMaths() {
     var mathsScreen = $('#mathsScreen');
     mathsScreen.removeClass(mathsScreenAnimation);
-    mathsScreen.css("visibility", "visible");
 
     setTimeout(function () {
         mathsScreen.addClass(mathsScreenAnimation);

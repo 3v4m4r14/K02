@@ -3,6 +3,7 @@ var score = 0;
 var correctAnswer;
 var taskInterval = null;
 var hasAnswer = false;
+var extraTaskIsActive = false;
 window.onkeydown = chooseKeyAction;
 $('#leftBtn').click(function () {
     moveLeft();
@@ -17,7 +18,7 @@ function startGame() {
     correctAnswer = getRandomMathOperation();
     updateStats();
     showGame();
-    hideModal();
+    hideEndModal();
     restartExtraTaskInterval();
     clearSquares();
     for (i = 0; i < 3; i++) {
@@ -32,18 +33,18 @@ function gameOver() {
     console.log("GameOver");
     hideGame();
     clearExtraTaskInterval();
-    showModal();
+    clearSquares();
+    showEndModal();
 }
 
 function extraTask() {
-    wobblyMaths();
+    showMaths();
     setTimeout(function () {
-        hideMaths();
         if (!hasAnswer) {
             removeLife();
         }
         hasAnswer = false;
-    }, 5000);
+    }, 5500);
 
 }
 
@@ -103,16 +104,15 @@ function checkAnswer() {
 
 function chooseKeyAction(e) {
     e = e || window.event;
-    switch (e.key) {
-        case "ArrowLeft":
-            moveLeft();
-            break;
-        case "ArrowRight":
-            moveRight();
-            break;
-        case "Enter":
-            e.preventDefault();
-            checkAnswer();
+    if (!extraTaskIsActive && e.key === "ArrowLeft") {
+        moveLeft();
+    } else if (!extraTaskIsActive && e.key === "ArrowRight") {
+        moveRight();
+    } else if (extraTaskIsActive && e.key === "Enter") {
+        e.preventDefault();
+        checkAnswer();
+    } else if (e.key === "Enter") {
+        e.preventDefault();
     }
 }
 
@@ -141,19 +141,44 @@ function hideGame() {
     $('#scoreScreen').css("visibility", "hidden");
 }
 
-function hideMaths() {
-    $('#mathsScreen').css("visibility", "hidden");
-}
-
-function showModal() {
+function showEndModal() {
     showFinalScore();
-    $('#modalScreen').modal('show');
+    $('#endModalScreen').modal('show');
 }
 
-function hideModal() {
-    $('#modalScreen').modal('hide');
+function hideEndModal() {
+    $('#endModalScreen').modal('hide');
+}
+
+function hideMaths() {
+    $('#mathsScreen').modal('hide');
+    $('#mathsProgressBar').css('width', '100%');
+    extraTaskIsActive = false;
+    console.log("INACTIVE");
+}
+
+function showMaths() {
+    extraTaskIsActive = true;
+    console.log("ACTIVE");
+    mathsCountdown();
+    wobblyMaths();
+    $('#mathsScreen').modal('show');
 }
 
 function showFinalScore() {
     $('#finalScore').text("FINAL SCORE: " + score);
+}
+
+function mathsCountdown() {
+    var mathsProgressBar = $('#mathsProgressBar');
+    var time = 50;
+    var max = 50;
+    int = setInterval(function () {
+        mathsProgressBar.css('width', Math.floor(100 * time-- / max) + '%');
+        if (time - 1 === -6) {
+            console.log("Breaking!");
+            clearInterval(int);
+            hideMaths();
+        }
+    }, 100);
 }

@@ -41,7 +41,7 @@ html, body {
 #mathsScreen {
     /*background-color: whitesmoke;*/
     padding: 1em;
-    visibility: hidden;
+    /*visibility: hidden;*/
 }
 
 .square {
@@ -83,6 +83,7 @@ html, body {
     -webkit-filter: drop-shadow(0 0 10px var(--red));
     filter: drop-shadow(0 0 10px var(--red));
     cursor: pointer;
+    margin-top: 20%;
 }
 
 .triangle-right {
@@ -94,4 +95,5 @@ html, body {
     -webkit-filter: drop-shadow(0 0 10px var(--blue));
     filter: drop-shadow(0 0 10px var(--blue));
     cursor: pointer;
+    margin-top: 20%;
 }
