@@ -11,22 +11,6 @@ $('#rightBtn').click(function () {
     moveRight();
 });
 
-function extraTaskInterval() {
-    return setInterval(function () {
-        extraTask();
-    }, 10000);
-}
-
-function clearExtraTaskInterval() {
-    clearInterval(taskInterval);
-}
-
-function restartExtraTaskInterval() {
-    clearExtraTaskInterval();
-    taskInterval = extraTaskInterval();
-    console.log("restarted interval");
-}
-
 function startGame() {
     lives = 3;
     score = 0;
@@ -62,6 +46,22 @@ function extraTask() {
         hasAnswer = false;
     }, 5000);
 
+}
+
+function extraTaskInterval() {
+    return setInterval(function () {
+        extraTask();
+    }, 10000);
+}
+
+function clearExtraTaskInterval() {
+    clearInterval(taskInterval);
+}
+
+function restartExtraTaskInterval() {
+    clearExtraTaskInterval();
+    taskInterval = extraTaskInterval();
+    console.log("restarted interval");
 }
 
 function removeLife() {

@@ -82,6 +82,7 @@ html, body {
     border-bottom: 25px solid transparent;
     -webkit-filter: drop-shadow(0 0 10px var(--red));
     filter: drop-shadow(0 0 10px var(--red));
+    cursor: pointer;
 }
 
 .triangle-right {
@@ -92,4 +93,5 @@ html, body {
     border-bottom: 25px solid transparent;
     -webkit-filter: drop-shadow(0 0 10px var(--blue));
     filter: drop-shadow(0 0 10px var(--blue));
+    cursor: pointer;
 }
