@@ -39,8 +39,12 @@ function moveDown() {
 function moveLeft() { // Red side
     var current = squareList[2];
     if (!current.classList.contains("square-red")) {
-        removeLife();
+        removeLife(); 
+        score -= 1;
+    } else {
+        score += 1;
     }
+    updateScore();
     move(current)
         .x(-200)
         .ease('in')
@@ -54,7 +58,11 @@ function moveRight() { // Blue side
     var current = squareList[2];
     if (!current.classList.contains("square-blue")) {
         removeLife();
+        score -= 1;
+    } else {
+        score += 1;
     }
+    updateScore();
     move(current)
         .x(200)
         .ease('in')
