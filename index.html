@@ -22,21 +22,11 @@
 
     <!-- Favicon
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <!--<link rel="icon" type="image/png" href="img/favicon.png">-->
+    <link rel="icon" type="image/png" href="pic/favicon.svg">
 
 </head>
 <body>
 <div id="game" class="container">
-    <div id="startScreen">
-        <div class="row d-flex justify-content-between">
-            <!--<div class="col-md-6">-->
-            <h1 id="title" class="whiteText">THE SORTING GAME</h1>
-            <!--</div>-->
-            <!--<div class="col-md-6">-->
-            <button id="startBtn" class="btn btn-danger btn-lg">START</button>
-            <!--</div>-->
-        </div>
-    </div>
 
     <div id="endModalScreen" class="modal fade" data-keyboard="false" data-backdrop="static" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -44,7 +34,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title">GAME OVER!</h5>
                     <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-                        <!--<span aria-hidden="true">&times;</span>-->
+                    <!--<span aria-hidden="true">&times;</span>-->
                     <!--</button>-->
                 </div>
                 <div class="modal-body">
@@ -57,21 +47,36 @@
         </div>
     </div>
 
+    <div id="startScreen">
+        <div class="row d-flex justify-content-between">
+            <!--<div class="col-md-6">-->
+            <h1 id="title" class="whiteText">THE SORTING GAME</h1>
+            <!--</div>-->
+            <!--<div class="col-md-6">-->
+            <button id="startBtn" class="btn btn-danger btn-lg">START</button>
+            <!--</div>-->
+        </div>
+    </div>
+
     <div id="scoreScreen">
-        <div class="row">
+        <div id="hearts" class="row">
+            <div class="col-sm-1">
+                <img id="life1" class="heart" src="pic/heart-full.png" alt="Full life 1">
+            </div>
+            <div class="col-sm-1">
+                <img id="life2" class="heart" src="pic/heart-full.png" alt="Full life 2">
+            </div>
+            <div class="col-sm-1">
+                <img id="life3" class="heart" src="pic/heart-full.png" alt="Full life 3">
+            </div>
+        </div>
+
+        <div class="row scoreLabel">
             <div class="col-md-2">
                 <h3 class="whiteText">SCORE: </h3>
             </div>
             <div class="col-md-2">
                 <h3 id="score" class="whiteText col">0</h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2">
-                <h3 class="whiteText">LIVES: </h3>
-            </div>
-            <div class="col-md-2">
-                <h3 id="lives" class="whiteText col">3</h3>
             </div>
         </div>
     </div>

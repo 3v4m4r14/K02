@@ -1,4 +1,5 @@
 const mathsScreenAnimation = 'animated bounceIn';
+
 var squareList = [];
 $('#startBtn').click(function () {
     var startBtn = $('#startBtn');
@@ -39,7 +40,7 @@ function moveDown() {
 function moveLeft() { // Red side
     var current = squareList[2];
     if (!current.classList.contains("square-red")) {
-        removeLife(); 
+        removeLife();
         score -= 1;
     } else {
         score += 1;
@@ -101,4 +102,14 @@ function wobblyMaths() {
         mathsScreen.addClass(mathsScreenAnimation);
     }, 10);
     console.log("wobbling!");
+}
+
+function flashingLife(curLife) {
+    var lifeLossAnimation = 'animated flash';
+    curLife.removeClass(lifeLossAnimation);
+
+    setTimeout(function () {
+        curLife.addClass(lifeLossAnimation);
+    }, 10);
+    console.log("flashing!");
 }

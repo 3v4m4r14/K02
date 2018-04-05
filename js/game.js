@@ -127,12 +127,26 @@ function updateScore() {
 }
 
 function updateLives() {
-    $('#lives').text("" + lives);
+    if (lives <= 3) {
+        var curLife = $('#life' + (lives + 1));
+        flashingLife(curLife);
+        curLife.attr('src', 'pic/heart-empty.png');
+    }
+}
+
+function resetLifeImages() {
+    var lives = $('.heart');
+    console.log(lives);
+    for (var i = 0; i < lives.length; i++) {
+        console.log(lives[i]);
+        lives[i].src = 'pic/heart-full.png';
+    }
 }
 
 function updateStats() {
     updateLives();
     updateScore();
+    resetLifeImages();
 }
 
 function emptyAnswerInputBox() {

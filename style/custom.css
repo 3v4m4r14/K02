@@ -13,10 +13,6 @@ html, body {
     padding: 0;
 }
 
-#title {
-    /*padding: 0.5em;*/
-}
-
 .whiteText {
     font-family: 'Montserrat', sans-serif;
     color: white;
@@ -27,21 +23,23 @@ html, body {
 }
 
 #startScreen {
-    /*text-align: center;*/
-    /*margin-top: 20%;*/
     margin-bottom: 10px;
     right: 0;
     left: 0;
 }
 
-#scoreScreen {
-    visibility: hidden;
+.scoreLabel {
+    padding-left: 1.3em;
+    padding-top: 0.3em;
+}
+
+.heart {
+    height: 5.5em;
+    width: auto;
 }
 
 #mathsScreen {
-    /*background-color: whitesmoke;*/
     padding: 1em;
-    /*visibility: hidden;*/
 }
 
 .square {
@@ -83,7 +81,7 @@ html, body {
     -webkit-filter: drop-shadow(0 0 10px var(--red));
     filter: drop-shadow(0 0 10px var(--red));
     cursor: pointer;
-    margin-top: 20%;
+    margin-top: 10%;
 }
 
 .triangle-right {
@@ -95,5 +93,5 @@ html, body {
     -webkit-filter: drop-shadow(0 0 10px var(--blue));
     filter: drop-shadow(0 0 10px var(--blue));
     cursor: pointer;
-    margin-top: 20%;
+    margin-top: 10%;
 }
