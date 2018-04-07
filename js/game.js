@@ -2,6 +2,7 @@ var lives = 3;
 var score = 0;
 var correctAnswer;
 var taskInterval = null;
+var squarePusherObject = null;
 var hasAnswer = false;
 var extraTaskIsActive = false;
 window.onkeydown = chooseKeyAction;
@@ -23,6 +24,7 @@ function startGame() {
     showGame();
     hideEndModal();
     restartExtraTaskInterval();
+    restartSquarePusher();
     clearSquares();
     for (i = 0; i < 4; i++) {
         spawnNew();
@@ -41,6 +43,7 @@ function gameOver() {
 }
 
 function extraTask() {
+    clearSquarePusher();
     showMaths();
     setTimeout(function () {
         if (!hasAnswer) {
@@ -57,7 +60,7 @@ function extraTask() {
 function extraTaskInterval() {
     return setInterval(function () {
         extraTask();
-    }, 100000);
+    }, 10000);
 }
 
 function clearExtraTaskInterval() {
@@ -68,6 +71,22 @@ function restartExtraTaskInterval() {
     clearExtraTaskInterval();
     taskInterval = extraTaskInterval();
     console.log("restarted interval");
+}
+
+function squarePusher() {
+    return setInterval(function () {
+        moveDown();
+    }, 400); // Take a songs beats per minute. 60 000 / BPM.
+}
+
+function clearSquarePusher() {
+    clearInterval(squarePusherObject);
+}
+
+function restartSquarePusher() {
+    clearSquarePusher();
+    squarePusherObject = squarePusher();
+    console.log("restarted square pusher");
 }
 
 function removeLife() {
@@ -106,6 +125,7 @@ function checkAnswer() {
     emptyAnswerInputBox();
     hideMaths();
     correctAnswer = getRandomMathOperation();
+    moveDown();
 }
 
 function chooseKeyAction(e) {

@@ -1,6 +1,6 @@
 const mathsScreenAnimation = 'animated bounceIn';
-const movingSquareIndex = 3;
 const maxSquareCount = 9;
+var movingSquareIndex = 3;
 
 var squareList = [];
 $('#startBtn').click(function () {
@@ -38,10 +38,21 @@ function moveDown() {
         .end();
     spawnNew();
     clearSquaresOverflow();
+    restartSquarePusher();
+    if (movingSquareIndex < maxSquareCount - 2) {
+        movingSquareIndex++;
+    }
+}
+
+function explosionPiece() {
+    var node = document.createElement("div");
+    node.classList.add("square");
+    this.appendChild(node);
 }
 
 function moveLeft() { // Red side
     var current = squareList[movingSquareIndex];
+    movingSquareIndex--;
     if (!current.classList.contains("square-red")) {
         removeLife();
         score -= 1;
@@ -54,12 +65,13 @@ function moveLeft() { // Red side
         .ease('in')
         .duration('0.2s')
         .end();
-    moveDown();
+    if (movingSquareIndex < 3) moveDown();
     console.log("moving left");
 }
 
 function moveRight() { // Blue side
     var current = squareList[movingSquareIndex];
+    movingSquareIndex--;
     if (!current.classList.contains("square-blue")) {
         removeLife();
         score -= 1;
@@ -72,7 +84,7 @@ function moveRight() { // Blue side
         .ease('in')
         .duration('0.2s')
         .end();
-    moveDown();
+    if (movingSquareIndex < 3) moveDown();
     console.log("moving right");
 }
 
