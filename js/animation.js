@@ -46,8 +46,23 @@ function moveDown() {
 
 function explosionPiece() {
     var node = document.createElement("div");
-    node.classList.add("square");
-    this.appendChild(node);
+    node.classList.add("explosion");
+    var parent = document.getElementById("explosion");
+    parent.appendChild(node);
+    var x = Math.random() * 10;
+    var y = Math.random() * 10;
+    move(node)
+        .set('transform', 'translate(0vw, 0vw)')
+        .duration('0s')
+        .then()
+            .set('transform', 'translate(' + x + 'vw, ' + y + 'vw)')
+            .ease('out')
+            .duration('0.3s')
+        .pop()
+        .end();
+    setTimeout(function () {
+        parent.removeChild(node);
+    }, 350);
 }
 
 function moveLeft() { // Red side

@@ -80,6 +80,8 @@ html, body {
 }
 
 .explosion {
+    width: 15px;
+    height: 15px;
     background-color: var(--purple);
     -webkit-filter: drop-shadow(0 0 10px var(--purple));
     filter: drop-shadow(0 0 10px var(--purple));
