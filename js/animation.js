@@ -1,5 +1,5 @@
 const mathsScreenAnimation = 'animated bounceIn';
-const maxSquareCount = 9;
+const maxSquareCount = 8;
 var movingSquareIndex = 3;
 
 var squareList = [];
@@ -15,6 +15,13 @@ $('#startBtn').click(function () {
     }
     startGame();
 });
+
+function pushDown() {
+    if (movingSquareIndex == maxSquareCount - 1) {
+        removeLife()
+    }
+    moveDown();
+}
 
 function moveDown() {
     move('#mover')
@@ -39,7 +46,7 @@ function moveDown() {
     spawnNew();
     clearSquaresOverflow();
     restartSquarePusher();
-    if (movingSquareIndex < maxSquareCount - 2) {
+    if (movingSquareIndex < maxSquareCount - 1) {
         movingSquareIndex++;
     }
 }
@@ -104,6 +111,7 @@ function moveRight() { // Blue side
 }
 
 function clearSquares() {
+    movingSquareIndex = 3;
     var holder = document.getElementById("squareHolder");
     squareList.forEach(element => {
         holder.removeChild(element);

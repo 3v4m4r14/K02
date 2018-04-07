@@ -17,7 +17,7 @@ $('.modal').on('shown.bs.modal', function () {
 });
 
 function startGame() {
-    lives = 200;
+    lives = 3;
     score = 0;
     correctAnswer = getRandomMathOperation();
     updateStats();
@@ -38,6 +38,7 @@ function gameOver() {
     console.log("GameOver");
     hideGame();
     clearExtraTaskInterval();
+    clearSquarePusher();
     clearSquares();
     showEndModal();
 }
@@ -48,6 +49,7 @@ function extraTask() {
     setTimeout(function () {
         if (!hasAnswer) {
             removeLife();
+            pushDown();
         }
         setTimeout(function () {
             emptyAnswerInputBox();
@@ -60,7 +62,7 @@ function extraTask() {
 function extraTaskInterval() {
     return setInterval(function () {
         extraTask();
-    }, 10000);
+    }, 15500);
 }
 
 function clearExtraTaskInterval() {
@@ -75,7 +77,7 @@ function restartExtraTaskInterval() {
 
 function squarePusher() {
     return setInterval(function () {
-        moveDown();
+        pushDown();
     }, 400); // Take a songs beats per minute. 60 000 / BPM.
 }
 
@@ -86,7 +88,6 @@ function clearSquarePusher() {
 function restartSquarePusher() {
     clearSquarePusher();
     squarePusherObject = squarePusher();
-    console.log("restarted square pusher");
 }
 
 function removeLife() {
@@ -125,7 +126,7 @@ function checkAnswer() {
     emptyAnswerInputBox();
     hideMaths();
     correctAnswer = getRandomMathOperation();
-    moveDown();
+    pushDown();
 }
 
 function chooseKeyAction(e) {
