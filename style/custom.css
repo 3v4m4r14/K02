@@ -23,6 +23,7 @@ html, body {
 }
 
 #startScreen {
+    font-size: 20vw;
     margin-bottom: 10px;
     right: 0;
     left: 0;

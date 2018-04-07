@@ -1,4 +1,6 @@
 const mathsScreenAnimation = 'animated bounceIn';
+const movingSquareIndex = 3;
+const maxSquareCount = 9;
 
 var squareList = [];
 $('#startBtn').click(function () {
@@ -16,7 +18,7 @@ $('#startBtn').click(function () {
 
 function moveDown() {
     move('#mover')
-        .set('margin-top', '-640px')
+        .set('margin-top', '-650px')
         .duration('0s')
         .then()
             .add('margin-top', 100)
@@ -35,10 +37,11 @@ function moveDown() {
         .pop()
         .end();
     spawnNew();
+    clearSquaresOverflow();
 }
 
 function moveLeft() { // Red side
-    var current = squareList[2];
+    var current = squareList[movingSquareIndex];
     if (!current.classList.contains("square-red")) {
         removeLife();
         score -= 1;
@@ -47,7 +50,7 @@ function moveLeft() { // Red side
     }
     updateScore();
     move(current)
-        .x(-200)
+        .set('transform', 'translateX(-20vw)')
         .ease('in')
         .duration('0.2s')
         .end();
@@ -56,7 +59,7 @@ function moveLeft() { // Red side
 }
 
 function moveRight() { // Blue side
-    var current = squareList[2];
+    var current = squareList[movingSquareIndex];
     if (!current.classList.contains("square-blue")) {
         removeLife();
         score -= 1;
@@ -65,7 +68,7 @@ function moveRight() { // Blue side
     }
     updateScore();
     move(current)
-        .x(200)
+        .set('transform', 'translateX(20vw)')
         .ease('in')
         .duration('0.2s')
         .end();
@@ -79,6 +82,13 @@ function clearSquares() {
         holder.removeChild(element);
     });
     squareList = [];
+}
+
+function clearSquaresOverflow() {
+    var holder = document.getElementById("squareHolder");
+    while (squareList.length > maxSquareCount) {
+        holder.removeChild(squareList.pop(maxSquareCount));
+    }
 }
 
 function spawnNew() {

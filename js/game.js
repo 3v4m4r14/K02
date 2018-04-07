@@ -16,7 +16,7 @@ $('.modal').on('shown.bs.modal', function () {
 });
 
 function startGame() {
-    lives = 3;
+    lives = 200;
     score = 0;
     correctAnswer = getRandomMathOperation();
     updateStats();
@@ -24,7 +24,7 @@ function startGame() {
     hideEndModal();
     restartExtraTaskInterval();
     clearSquares();
-    for (i = 0; i < 3; i++) {
+    for (i = 0; i < 4; i++) {
         spawnNew();
     }
     $('#answerCheckBtn').click(function () {
@@ -57,7 +57,7 @@ function extraTask() {
 function extraTaskInterval() {
     return setInterval(function () {
         extraTask();
-    }, 10000);
+    }, 100000);
 }
 
 function clearExtraTaskInterval() {
