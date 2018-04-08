@@ -60,20 +60,23 @@
 
     <div id="scoreScreen">
         <div id="hearts">
-            <img id="life1" class="heart" style="width: 10vmin; height: 10vmin" src="pic/heart-full.png" alt="Full life 1">
-            <img id="life2" class="heart" style="width: 10vmin; height: 10vmin" src="pic/heart-full.png" alt="Full life 2">
-            <img id="life3" class="heart" style="width: 10vmin; height: 10vmin" src="pic/heart-full.png" alt="Full life 3">
+            <img id="life1" class="heart" style="width: 10vmin; height: 10vmin" src="pic/heart-full.png"
+                 alt="Full life 1">
+            <img id="life2" class="heart" style="width: 10vmin; height: 10vmin" src="pic/heart-full.png"
+                 alt="Full life 2">
+            <img id="life3" class="heart" style="width: 10vmin; height: 10vmin" src="pic/heart-full.png"
+                 alt="Full life 3">
 
-        <!-- <div id="hearts" class="row">
-            <div class="col-sm-1">
-                <img id="life1" class="heart" src="pic/heart-full.png" alt="Full life 1">
-            </div>
-            <div class="col-sm-1">
-                <img id="life2" class="heart" src="pic/heart-full.png" alt="Full life 2">
-            </div>
-            <div class="col-sm-1">
-                <img id="life3" class="heart" src="pic/heart-full.png" alt="Full life 3">
-            </div> -->
+            <!-- <div id="hearts" class="row">
+                <div class="col-sm-1">
+                    <img id="life1" class="heart" src="pic/heart-full.png" alt="Full life 1">
+                </div>
+                <div class="col-sm-1">
+                    <img id="life2" class="heart" src="pic/heart-full.png" alt="Full life 2">
+                </div>
+                <div class="col-sm-1">
+                    <img id="life3" class="heart" src="pic/heart-full.png" alt="Full life 3">
+                </div> -->
         </div>
 
         <div class="row scoreLabel">
@@ -92,6 +95,15 @@
             <div class="col-2"></div>
             <div id="rightBtn" class="triangle-right col"></div>
         </div>
+        <div class="row justify-content-center">
+            <div class="col-sm-3">
+                <div id="squareProgressBarContainer" class="progress">
+                    <div id="squareProgressBar" class="progress-bar progress-bar-striped"
+                         role="progressbar"
+                         style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div id="mathsScreen" class="modal" data-keyboard="false" data-backdrop="static" role="dialog">
@@ -100,7 +112,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title">BONUS TASK!</h5>
                     <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-                        <!--<span aria-hidden="true">&times;</span>-->
+                    <!--<span aria-hidden="true">&times;</span>-->
                     <!--</button>-->
                 </div>
                 <div class="modal-body">
@@ -113,7 +125,8 @@
                         </form>
                     </div>
                     <div class="progress">
-                        <div id="mathsProgressBar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                        <div id="mathsProgressBar" class="progress-bar progress-bar-striped progress-bar-animated"
+                             role="progressbar"
                              style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                 </div>
@@ -136,9 +149,9 @@
 
 <!-- <div> 
     <button onclick="explosionPiece()" type="button">Explode</button> 
-</div> --> 
- 
-<div class="end"></div> 
+</div> -->
+
+<div class="end"></div>
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

@@ -2,6 +2,7 @@ var lives = 3;
 var score = 0;
 var correctAnswer;
 var taskInterval = null;
+var squareInterval = null;
 var hasAnswer = false;
 var extraTaskIsActive = false;
 window.onkeydown = chooseKeyAction;
@@ -16,13 +17,14 @@ $('.modal').on('shown.bs.modal', function () {
 });
 
 function startGame() {
-    lives = 200;
+    lives = 3;
     score = 0;
     correctAnswer = getRandomMathOperation();
     updateStats();
     showGame();
     hideEndModal();
     restartExtraTaskInterval();
+    resetSquareProgressBar();
     clearSquares();
     for (i = 0; i < 4; i++) {
         spawnNew();
@@ -57,7 +59,7 @@ function extraTask() {
 function extraTaskInterval() {
     return setInterval(function () {
         extraTask();
-    }, 100000);
+    }, 20000);
 }
 
 function clearExtraTaskInterval() {
@@ -111,8 +113,10 @@ function checkAnswer() {
 function chooseKeyAction(e) {
     e = e || window.event;
     if (!extraTaskIsActive && e.key === "ArrowLeft") {
+        resetSquareProgressBar();
         moveLeft();
     } else if (!extraTaskIsActive && e.key === "ArrowRight") {
+        resetSquareProgressBar();
         moveRight();
     } else if (extraTaskIsActive && e.key === "Enter") {
         e.preventDefault();
@@ -189,6 +193,12 @@ function showFinalScore() {
     $('#finalScore').text("FINAL SCORE: " + score);
 }
 
+function resetSquareProgressBar() {
+    clearInterval(squareInterval);
+    $('#squareProgressBar').css('width', '100%');
+    squareCountdown();
+}
+
 function mathsCountdown() {
     var mathsProgressBar = $('#mathsProgressBar');
     var time = 50;
@@ -199,6 +209,19 @@ function mathsCountdown() {
             console.log("Breaking!");
             clearInterval(int);
             hideMaths();
+        }
+    }, 100);
+}
+
+function squareCountdown() {
+    var squareProgressBar = $('#squareProgressBar');
+    var time = 50;
+    var max = 50;
+    squareInterval = setInterval(function () {
+        squareProgressBar.css('width', Math.floor(105 * time-- / max) + '%');
+        if (time - 1 === -6) {
+            clearInterval(squareInterval);
+            // resetSquareProgressBar();
         }
     }, 100);
 }
