@@ -1,7 +1,7 @@
 const mathsScreenAnimation = 'animated bounceIn';
 const movingSquareIndex = 3;
 const maxSquareCount = 9;
-const moverTimer = 2000;
+var moverTimer = 10000;
 var moveInterval;
 
 var squareList = [];
@@ -59,6 +59,7 @@ function moveDown() {
 }
 
 function resetSquareProgressBar() {
+    moverTimer -= 10;
     move('#squareProgressBar')
         .set('width', '100%')
         .duration('0s')
