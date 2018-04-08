@@ -76,9 +76,11 @@ function moveLeft() { // Red side
     if (!current.classList.contains("square-red")) {
         removeLife();
         score -= 1;
+        playErrorSound();
     } else {
         isCorrect = true;
         score += 1;
+        playSuccessSound();
     }
     updateScore();
     animateMoveToSide(current, -20, isCorrect);
@@ -92,9 +94,11 @@ function moveRight() { // Blue side
     if (!current.classList.contains("square-blue")) {
         removeLife();
         score -= 1;
+        playErrorSound();
     } else {
         isCorrect = true;
         score += 1;
+        playSuccessSound();
     }
     updateScore();
     animateMoveToSide(current, 20, isCorrect);

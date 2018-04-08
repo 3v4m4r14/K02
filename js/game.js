@@ -49,6 +49,7 @@ function gameOver() {
     // clearSquares();
     showEndModal();
     stopAnnyang();
+    playEndSound();
 }
 
 function extraTask() {
