@@ -105,7 +105,8 @@ html, body {
     -webkit-filter: drop-shadow(0 0 10px var(--red));
     filter: drop-shadow(0 0 10px var(--red));
     cursor: pointer;
-    margin-top: 10%;
+    margin-top: 40px;
+    margin-right: 10px;
 }
 
 .triangle-right {
@@ -117,5 +118,6 @@ html, body {
     -webkit-filter: drop-shadow(0 0 10px var(--blue));
     filter: drop-shadow(0 0 10px var(--blue));
     cursor: pointer;
-    margin-top: 10%;
+    margin-top: 40px;
+    margin-left: 10px;
 }

@@ -86,13 +86,13 @@
         </div>
     </div>
 
-    <div id="gameScreen">
+    <!-- <div id="gameScreen">
         <div class="row justify-content-center">
             <div id="leftBtn" class="triangle-left col"></div>
             <div class="col-2"></div>
             <div id="rightBtn" class="triangle-right col"></div>
         </div>
-    </div>
+    </div> -->
 
     <div id="mathsScreen" class="modal" data-keyboard="false" data-backdrop="static" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -131,11 +131,14 @@
     <button onclick="explosionPiece()" type="button">Explode</button>
 </div>
 <div>
-    <button onclick="moveDown()" type="button">Don't Click Me</button>
+    <button onclick="pushDown()" type="button">Don't Click Me</button>
 </div>
 <div id="squareHolder">
     <div id="mover" style="margin-top: -650px"></div>
-    <div class="square" style="visibility: none; height: 1px;"></div>
+    <div class="square row" style="visibility: none; height: 1px; width: 500px">
+        <div id="leftBtn" class="triangle-left col"></div>
+        <div id="rightBtn" class="triangle-right col"></div>
+    </div>
 </div>
 
 <div class="end"></div>

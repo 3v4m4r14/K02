@@ -1,6 +1,8 @@
 const mathsScreenAnimation = 'animated bounceIn';
 const maxSquareCount = 8;
 var movingSquareIndex = 3;
+var leftArrow = document.getElementById("leftBtn");
+var rightArrow = document.getElementById("rightBtn");
 
 var squareList = [];
 $('#startBtn').click(function () {
@@ -20,7 +22,9 @@ function pushDown() {
     if (movingSquareIndex == maxSquareCount - 1) {
         removeLife()
     }
-    moveDown();
+    if (lives > 0) {
+        moveDown();
+    }
 }
 
 function moveDown() {
@@ -45,10 +49,17 @@ function moveDown() {
         .end();
     spawnNew();
     clearSquaresOverflow();
-    restartSquarePusher();
     if (movingSquareIndex < maxSquareCount - 1) {
         movingSquareIndex++;
     }
+    updateArrows();
+    restartSquarePusher();
+}
+
+function updateArrows() {
+    var row = squareList[movingSquareIndex];
+    row.insertBefore(leftArrow, row.firstChild);
+    row.appendChild(rightArrow);
 }
 
 function explosionPiece() {
@@ -73,7 +84,7 @@ function explosionPiece() {
 }
 
 function moveLeft() { // Red side
-    var current = squareList[movingSquareIndex];
+    var current = squareList[movingSquareIndex].getElementsByClassName("square")[0];
     movingSquareIndex--;
     if (!current.classList.contains("square-red")) {
         removeLife();
@@ -82,6 +93,7 @@ function moveLeft() { // Red side
         score += 1;
     }
     updateScore();
+    updateArrows();
     move(current)
         .set('transform', 'translateX(-20vw)')
         .ease('in')
@@ -92,7 +104,7 @@ function moveLeft() { // Red side
 }
 
 function moveRight() { // Blue side
-    var current = squareList[movingSquareIndex];
+    var current = squareList[movingSquareIndex].getElementsByClassName("square")[0];
     movingSquareIndex--;
     if (!current.classList.contains("square-blue")) {
         removeLife();
@@ -101,6 +113,7 @@ function moveRight() { // Blue side
         score += 1;
     }
     updateScore();
+    updateArrows();
     move(current)
         .set('transform', 'translateX(20vw)')
         .ease('in')
@@ -127,8 +140,9 @@ function clearSquaresOverflow() {
 }
 
 function spawnNew() {
+    var squareRow = document.createElement("div");
     var node = document.createElement("div");
-    squareList.unshift(node);
+    squareRow.classList.add("square-row", "row");
     node.classList.add("square");
     var doc = document.getElementById("squareHolder");
     if (Math.random() > 0.5) {
@@ -136,7 +150,9 @@ function spawnNew() {
     } else {
         node.classList.add("square-blue");
     }
-    doc.insertBefore(node, document.getElementsByClassName("square")[0]);
+    doc.insertBefore(squareRow, squareList[0]);
+    squareRow.appendChild(node);
+    squareList.unshift(squareRow);
 }
 
 function wobblyMaths() {
