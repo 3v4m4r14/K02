@@ -1,6 +1,7 @@
 const mathsScreenAnimation = 'animated bounceIn';
 const movingSquareIndex = 3;
 const maxSquareCount = 9;
+const moverTimer = 2000;
 var moveInterval;
 
 var squareList = [];
@@ -27,12 +28,12 @@ function restartMoveTimer() {
         animateMoveToSide(squareList[movingSquareIndex], 0, false);
         moveDown();
         removeLife();
-    }, 2000);
+    }, moverTimer);
 }
 
 function moveDown() {
     move('#mover')
-        .set('margin-top', '-650px')
+        .set('margin-top', '-700px')
         .duration('0s')
         .then()
             .add('margin-top', 100)
@@ -53,6 +54,19 @@ function moveDown() {
     spawnNew();
     clearSquaresOverflow();
     restartMoveTimer();
+    resetSquareProgressBar();
+}
+
+function resetSquareProgressBar() {
+    move('#squareProgressBar')
+        .set('width', '100%')
+        .duration('0s')
+        .then()
+            .set('width', '0%')
+            .duration(moverTimer)
+            .ease('linear')
+        .pop()
+        .end()
 }
 
 function moveLeft() { // Red side

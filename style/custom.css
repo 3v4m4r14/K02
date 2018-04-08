@@ -117,9 +117,3 @@ html, body {
     -webkit-filter: drop-shadow(0 0 10px var(--yellow)); 
     filter: drop-shadow(0 0 10px var(--yellow)); 
 } 
- 
-.explosion { 
-    background-color: var(--purple); 
-    -webkit-filter: drop-shadow(0 0 10px var(--purple)); 
-    filter: drop-shadow(0 0 10px var(--purple)); 
-}
