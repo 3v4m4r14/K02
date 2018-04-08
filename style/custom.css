@@ -1,6 +1,8 @@
 :root {
     --red: #ff0000;
     --blue: #238aff;
+    --yellow: #fddb1c; 
+    --purple: #6b1cfd; 
 }
 
 body {
@@ -95,4 +97,23 @@ html, body {
     filter: drop-shadow(0 0 10px var(--blue));
     cursor: pointer;
     margin-top: 10%;
+}
+
+.end { 
+    position: absolute; 
+    top: 800px; 
+    width: 100%; 
+    height: 5px; 
+    align-self: center; 
+    margin-left: auto; 
+    margin-right: auto; 
+    background-color: var(--yellow); 
+    -webkit-filter: drop-shadow(0 0 10px var(--yellow)); 
+    filter: drop-shadow(0 0 10px var(--yellow)); 
+} 
+ 
+.explosion { 
+    background-color: var(--purple); 
+    -webkit-filter: drop-shadow(0 0 10px var(--purple)); 
+    filter: drop-shadow(0 0 10px var(--purple)); 
 }
