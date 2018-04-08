@@ -17,7 +17,7 @@ $('.modal').on('shown.bs.modal', function () {
 });
 
 function startGame() {
-    lives = 500;
+    lives = 3;
     score = 0;
     correctAnswer = getRandomMathOperation();
     updateStats();
@@ -79,7 +79,7 @@ function restartExtraTaskInterval() {
 function squarePusher() {
     return setInterval(function () {
         pushDown();
-    }, 2000); // Take a songs beats per minute. 60 000 / BPM.
+    }, 600); // Take a songs beats per minute. 60 000 / BPM.
 }
 
 function clearSquarePusher() {

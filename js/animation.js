@@ -1,5 +1,5 @@
 const mathsScreenAnimation = 'animated bounceIn';
-const maxSquareCount = 8;
+const maxSquareCount = 9;
 var movingSquareIndex = 3;
 var leftArrow = document.getElementById("leftBtn");
 var rightArrow = document.getElementById("rightBtn");
