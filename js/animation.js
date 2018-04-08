@@ -56,6 +56,7 @@ function moveDown() {
 }
 
 function moveLeft() { // Red side
+    resetSquareProgressBar();
     var current = squareList[movingSquareIndex];
     var isCorrect = false;
     if (!current.classList.contains("square-red")) {
@@ -68,10 +69,10 @@ function moveLeft() { // Red side
     updateScore();
     animateMoveToSide(current, -20, isCorrect);
     moveDown();
-    console.log("moving left");
 }
 
 function moveRight() { // Blue side
+    resetSquareProgressBar();
     var current = squareList[movingSquareIndex];
     var isCorrect = false;
     if (!current.classList.contains("square-blue")) {
@@ -84,7 +85,6 @@ function moveRight() { // Blue side
     updateScore();
     animateMoveToSide(current, 20, isCorrect);
     moveDown();
-    console.log("moving right");
 }
 
 function animateMoveToSide(element, amount, isCorrect) {

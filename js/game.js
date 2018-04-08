@@ -2,6 +2,7 @@ var lives = 3;
 var score = 0;
 var correctAnswer;
 var taskInterval = null;
+var squareInterval = null;
 var hasAnswer = false;
 var extraTaskIsActive = false;
 window.onkeydown = chooseKeyAction;
@@ -16,7 +17,7 @@ $('.modal').on('shown.bs.modal', function () {
 });
 
 function startGame() {
-    lives = 100;
+    lives = 3;
     score = 0;
     correctAnswer = getRandomMathOperation();
     updateStats();
@@ -24,6 +25,7 @@ function startGame() {
     hideEndModal();
     restartExtraTaskInterval();
     restartMoveTimer();
+    resetSquareProgressBar();
     clearSquares();
     for (i = 0; i < 4; i++) {
         spawnNew();
@@ -31,6 +33,8 @@ function startGame() {
     $('#answerCheckBtn').click(function () {
         checkAnswer();
     });
+
+    startAnnyang();
 }
 
 function gameOver() {
@@ -40,9 +44,11 @@ function gameOver() {
     clearMoveTimer();
     clearSquares();
     showEndModal();
+    stopAnnyang();
 }
 
 function extraTask() {
+    stopAnnyang();
     showMaths();
     setTimeout(function () {
         if (!hasAnswer) {
@@ -54,12 +60,13 @@ function extraTask() {
         }, 1000);
         hasAnswer = false;
     }, 5500);
+    startAnnyang();
 }
 
 function extraTaskInterval() {
     return setInterval(function () {
         extraTask();
-    }, 100000);
+    }, 20000);
 }
 
 function clearExtraTaskInterval() {
@@ -193,6 +200,12 @@ function showFinalScore() {
     $('#finalScore').text("FINAL SCORE: " + score);
 }
 
+function resetSquareProgressBar() {
+    clearInterval(squareInterval);
+    $('#squareProgressBar').css('width', '100%');
+    squareCountdown();
+}
+
 function mathsCountdown() {
     var mathsProgressBar = $('#mathsProgressBar');
     var time = 50;
@@ -203,6 +216,19 @@ function mathsCountdown() {
             console.log("Breaking!");
             clearInterval(int);
             hideMaths();
+        }
+    }, 100);
+}
+
+function squareCountdown() {
+    var squareProgressBar = $('#squareProgressBar');
+    var time = 100;
+    var max = 100;
+    squareInterval = setInterval(function () {
+        squareProgressBar.css('width', Math.floor(100 * time-- / max) + '%');
+        if (time - 1 === -6) {
+            clearInterval(squareInterval);
+            // resetSquareProgressBar();
         }
     }, 100);
 }
