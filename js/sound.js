@@ -1,8 +1,55 @@
-var successSound = new Audio('sound/success.wav');
+var successSound = new Audio('sound/success-short.wav');
 var errorSound = new Audio('sound/error.wav');
 var endSound = new Audio('sound/end.wav');
+var mathsErrorSound = new Audio('sound/mathsError.wav');
+var mathsSuccessSound = new Audio('sound/success.wav');
+var backgroundMusic = new Audio('sound/underground.wav');
+backgroundMusic.loop = true;
+backgroundMusic.play();
 
-function stopAllSounds() {
+function changeBackgroundMusicStatus() {
+    var musicOn = document.getElementById('musicOn');
+    if (musicOn.checked) {
+        unmuteBackgrounMusic();
+    } else {
+        muteBackgroundMusic();
+    }
+}
+
+function changeSoundStatus() {
+    var soundOn = document.getElementById('soundOn');
+    if (soundOn.checked) {
+        unmuteSounds();
+    } else {
+        muteSounds();
+    }
+}
+
+function muteBackgroundMusic() {
+    backgroundMusic.muted = true;
+}
+
+function unmuteBackgrounMusic() {
+    backgroundMusic.muted = false;
+}
+
+function muteSounds() {
+    successSound.muted = true;
+    errorSound.muted = true;
+    endSound.muted = true;
+    mathsErrorSound.muted = true;
+    mathsSuccessSound.muted = true;
+}
+
+function unmuteSounds() {
+    successSound.muted = false;
+    errorSound.muted = false;
+    endSound.muted = false;
+    mathsErrorSound.muted = false;
+    mathsSuccessSound.muted = false;
+}
+
+function stopArrowSounds() {
     successSound.pause();
     successSound.currentTime = 0;
     errorSound.pause();
@@ -12,16 +59,26 @@ function stopAllSounds() {
 }
 
 function playSuccessSound() {
-    stopAllSounds();
+    stopArrowSounds();
     successSound.play();
 }
 
 function playErrorSound() {
-    stopAllSounds();
+    stopArrowSounds();
     errorSound.play();
 }
 
 function playEndSound() {
-    stopAllSounds();
+    stopArrowSounds();
     endSound.play();
+}
+
+function playMathsErrorSound() {
+    stopArrowSounds();
+    mathsErrorSound.play();
+}
+
+function playMathsSuccessSound() {
+    stopArrowSounds();
+    mathsSuccessSound.play();
 }

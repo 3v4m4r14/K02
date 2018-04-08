@@ -5,7 +5,6 @@ var lives = 3;
 var score = 0;
 var correctAnswer;
 var taskInterval = null;
-var squareInterval = null;
 var hasAnswer = false;
 var extraTaskIsActive = false;
 
@@ -46,10 +45,10 @@ function gameOver() {
     hideGame();
     clearExtraTaskInterval();
     clearMoveTimer();
-    // clearSquares();
-    showEndModal();
     stopAnnyang();
     playEndSound();
+    // clearSquares();
+    showEndModal();
 }
 
 function extraTask() {
@@ -58,6 +57,7 @@ function extraTask() {
     setTimeout(function () {
         if (!hasAnswer) {
             removeLife();
+            playMathsErrorSound();
         }
         setTimeout(function () {
             emptyAnswerInputBox();
@@ -113,9 +113,11 @@ function checkAnswer() {
 
     if (correctAnswer === parseInt(userAnswer)) {
         score += correctAnswer;
+        playMathsSuccessSound();
     } else {
         score -= correctAnswer;
         removeLife();
+        playMathsErrorSound();
     }
     updateScore();
     emptyAnswerInputBox();

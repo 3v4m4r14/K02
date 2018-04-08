@@ -9,6 +9,7 @@
     <title>Sorting</title>
     <meta name="description" content="Kasutajaliidesed, kodutöö 2">
     <meta name="author" content="Eva Maria Veitmaa, 155408IAPB; Ingmar Trump">
+    <meta name="music" content="Background Music by PlayOnLoop.com. Licensed under Creative Commons By Attribution 4.0">
 
     <!-- Style
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -62,24 +63,32 @@
     </div>
 
     <div id="scoreScreen">
-        <div id="hearts">
-            <img id="life1" class="heart" style="width: 10vmin; height: 10vmin" src="pic/heart-full.png"
-                 alt="Full life 1">
-            <img id="life2" class="heart" style="width: 10vmin; height: 10vmin" src="pic/heart-full.png"
-                 alt="Full life 2">
-            <img id="life3" class="heart" style="width: 10vmin; height: 10vmin" src="pic/heart-full.png"
-                 alt="Full life 3">
+        <div class="row d-flex justify-content-between">
+            <div id="hearts">
+                <img id="life1" class="heart" style="width: 10vmin; height: 10vmin" src="pic/heart-full.png"
+                     alt="Full life 1">
+                <img id="life2" class="heart" style="width: 10vmin; height: 10vmin" src="pic/heart-full.png"
+                     alt="Full life 2">
+                <img id="life3" class="heart" style="width: 10vmin; height: 10vmin" src="pic/heart-full.png"
+                     alt="Full life 3">
+            </div>
 
-            <!-- <div id="hearts" class="row">
-                <div class="col-sm-1">
-                    <img id="life1" class="heart" src="pic/heart-full.png" alt="Full life 1">
+            <div id="soundOptions">
+                <div class="row d-flex justify-content-end">
+                    <div class="whiteText soundLabel">MUSIC:</div>
+                    <label class="switch">
+                        <input id="musicOn" type="checkbox" onclick="changeBackgroundMusicStatus()" checked>
+                        <span class="slider round"></span>
+                    </label>
                 </div>
-                <div class="col-sm-1">
-                    <img id="life2" class="heart" src="pic/heart-full.png" alt="Full life 2">
+                <div class="row d-flex justify-content-end">
+                    <div class="whiteText soundLabel">SOUND:</div>
+                    <label class="switch">
+                        <input id="soundOn" type="checkbox" onclick="changeSoundStatus()" checked>
+                        <span class="slider round"></span>
+                    </label>
                 </div>
-                <div class="col-sm-1">
-                    <img id="life3" class="heart" src="pic/heart-full.png" alt="Full life 3">
-                </div> -->
+            </div>
         </div>
 
         <div class="row scoreLabel">
