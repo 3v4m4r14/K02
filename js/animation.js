@@ -28,6 +28,7 @@ function restartMoveTimer() {
         animateMoveToSide(squareList[movingSquareIndex], 0, false);
         moveDown();
         removeLife();
+        playErrorSound();
     }, moverTimer);
 }
 
