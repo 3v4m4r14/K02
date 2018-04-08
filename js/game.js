@@ -32,6 +32,8 @@ function startGame() {
     $('#answerCheckBtn').click(function () {
         checkAnswer();
     });
+
+    startAnnyang();
 }
 
 function gameOver() {
@@ -40,9 +42,11 @@ function gameOver() {
     clearExtraTaskInterval();
     clearSquares();
     showEndModal();
+    stopAnnyang();
 }
 
 function extraTask() {
+    stopAnnyang();
     showMaths();
     setTimeout(function () {
         if (!hasAnswer) {
@@ -54,6 +58,7 @@ function extraTask() {
         }, 1000);
         hasAnswer = false;
     }, 5500);
+    startAnnyang();
 }
 
 function extraTaskInterval() {
@@ -113,10 +118,8 @@ function checkAnswer() {
 function chooseKeyAction(e) {
     e = e || window.event;
     if (!extraTaskIsActive && e.key === "ArrowLeft") {
-        resetSquareProgressBar();
         moveLeft();
     } else if (!extraTaskIsActive && e.key === "ArrowRight") {
-        resetSquareProgressBar();
         moveRight();
     } else if (extraTaskIsActive && e.key === "Enter") {
         e.preventDefault();
@@ -215,10 +218,10 @@ function mathsCountdown() {
 
 function squareCountdown() {
     var squareProgressBar = $('#squareProgressBar');
-    var time = 50;
-    var max = 50;
+    var time = 100;
+    var max = 100;
     squareInterval = setInterval(function () {
-        squareProgressBar.css('width', Math.floor(105 * time-- / max) + '%');
+        squareProgressBar.css('width', Math.floor(100 * time-- / max) + '%');
         if (time - 1 === -6) {
             clearInterval(squareInterval);
             // resetSquareProgressBar();

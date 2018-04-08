@@ -41,6 +41,7 @@ function moveDown() {
 }
 
 function moveLeft() { // Red side
+    resetSquareProgressBar();
     var current = squareList[movingSquareIndex];
     if (!current.classList.contains("square-red")) {
         removeLife();
@@ -55,10 +56,10 @@ function moveLeft() { // Red side
         .duration('0.2s')
         .end();
     moveDown();
-    console.log("moving left");
 }
 
 function moveRight() { // Blue side
+    resetSquareProgressBar();
     var current = squareList[movingSquareIndex];
     if (!current.classList.contains("square-blue")) {
         removeLife();
@@ -73,7 +74,6 @@ function moveRight() { // Blue side
         .duration('0.2s')
         .end();
     moveDown();
-    console.log("moving right");
 }
 
 function clearSquares() {
