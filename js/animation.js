@@ -24,6 +24,7 @@ function clearMoveTimer() {
 function restartMoveTimer() {
     clearMoveTimer();
     moveInterval = setInterval(function() {
+        animateMoveToSide(squareList[movingSquareIndex], 0, false);
         moveDown();
         removeLife();
     }, 2000);
@@ -56,38 +57,81 @@ function moveDown() {
 
 function moveLeft() { // Red side
     var current = squareList[movingSquareIndex];
+    var isCorrect = false;
     if (!current.classList.contains("square-red")) {
         removeLife();
         score -= 1;
     } else {
+        isCorrect = true;
         score += 1;
     }
     updateScore();
-    move(current)
-        .set('transform', 'translateX(-20vw)')
-        .ease('in')
-        .duration('0.2s')
-        .end();
+    animateMoveToSide(current, -20, isCorrect);
     moveDown();
     console.log("moving left");
 }
 
 function moveRight() { // Blue side
     var current = squareList[movingSquareIndex];
+    var isCorrect = false;
     if (!current.classList.contains("square-blue")) {
         removeLife();
         score -= 1;
     } else {
+        isCorrect = true;
         score += 1;
     }
     updateScore();
-    move(current)
-        .set('transform', 'translateX(20vw)')
-        .ease('in')
-        .duration('0.2s')
-        .end();
+    animateMoveToSide(current, 20, isCorrect);
     moveDown();
     console.log("moving right");
+}
+
+function animateMoveToSide(element, amount, isCorrect) {
+    if (isCorrect) {
+        var color = 'var(--red)';
+        if (element.classList.contains("square-blue")) {
+            color = 'var(--blue)';
+        }
+        console.log(color);
+        move(element)
+            .set('transform', 'translateX(' + amount + 'vw)')
+            .ease('in')
+            .duration('0.2s')
+            .then()
+                .set('background-color', color)
+                .set('-webkit-filter', 'drop-shadow(0 0 15px ' + color + ')')
+                .set('filter', 'drop-shadow(0 0 15px ' + color + ')')
+                .set('z-index', 2)
+                .duration('0.3s')
+                .ease('in')
+            .pop()
+            .end();
+    } else {
+        var x = Math.random() * 50 - 25;
+        var y = Math.random() * 50 - 25;
+        move(element)
+            .set('transform', 'translateX(' + amount + 'vw)')
+            .ease('in')
+            .duration('0.2s')
+            .then()
+                .set('background-color', 'var(--purple)')
+                .set('-webkit-filter', 'drop-shadow(0 0 15px var(--purple))')
+                .set('filter', 'drop-shadow(0 0 15px var(--purple))')
+                .duration('0.5s')
+                .ease('out')
+                .then()
+                    .set('background-color', 'transparent')
+                    .set('-webkit-filter', 'drop-shadow(0 0 0 transparent)')
+                    .set('filter', 'drop-shadow(0 0 0 transparent)')
+                    .scale(2)
+                    .x(amount * 5 + x)
+                    .y(y)
+                    .duration('0.5s')
+                .pop()
+            .pop()
+            .end();
+    }
 }
 
 function clearSquares() {

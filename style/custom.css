@@ -56,14 +56,14 @@ html, body {
 
 .square-red {
     background-color: var(--red);
-    -webkit-filter: drop-shadow(0 0 10px var(--red));
-    filter: drop-shadow(0 0 10px var(--red));
+    -webkit-filter: drop-shadow(0 0 5px var(--red));
+    filter: drop-shadow(0 0 5px var(--red));
 }
 
 .square-blue {
     background-color: var(--blue);
-    -webkit-filter: drop-shadow(0 0 10px var(--blue));
-    filter: drop-shadow(0 0 10px var(--blue));
+    -webkit-filter: drop-shadow(0 0 5px var(--blue));
+    filter: drop-shadow(0 0 5px var(--blue));
 }
 
 #mover {

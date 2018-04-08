@@ -16,7 +16,7 @@ $('.modal').on('shown.bs.modal', function () {
 });
 
 function startGame() {
-    lives = 3;
+    lives = 100;
     score = 0;
     correctAnswer = getRandomMathOperation();
     updateStats();
@@ -59,7 +59,7 @@ function extraTask() {
 function extraTaskInterval() {
     return setInterval(function () {
         extraTask();
-    }, 10000);
+    }, 100000);
 }
 
 function clearExtraTaskInterval() {
