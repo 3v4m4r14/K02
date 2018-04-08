@@ -46,8 +46,10 @@ function moveLeft() { // Red side
     if (!current.classList.contains("square-red")) {
         removeLife();
         score -= 1;
+        playErrorSound();
     } else {
         score += 1;
+        playSuccessSound();
     }
     updateScore();
     move(current)
@@ -64,8 +66,10 @@ function moveRight() { // Blue side
     if (!current.classList.contains("square-blue")) {
         removeLife();
         score -= 1;
+        playErrorSound();
     } else {
         score += 1;
+        playSuccessSound();
     }
     updateScore();
     move(current)

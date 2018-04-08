@@ -2,7 +2,7 @@ if (annyang) {
     console.log("Annyang");
     // Let's define our first command. First the text we expect, and then the function it should call
     var commands = {
-        'left': function() {
+        'left': function () {
             moveLeft();
         },
         'right': function () {
@@ -15,9 +15,13 @@ if (annyang) {
 }
 
 function startAnnyang() {
-    annyang.start({autoRestart: true, continuous: false});
+    if (annyang) {
+        annyang.start({autoRestart: true, continuous: false});
+    }
 }
 
 function stopAnnyang() {
-    annyang.pause();
+    if (annyang) {
+        annyang.pause();
+    }
 }
