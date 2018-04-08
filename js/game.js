@@ -16,13 +16,14 @@ $('.modal').on('shown.bs.modal', function () {
 });
 
 function startGame() {
-    lives = 200;
+    lives = 3;
     score = 0;
     correctAnswer = getRandomMathOperation();
     updateStats();
     showGame();
     hideEndModal();
     restartExtraTaskInterval();
+    restartMoveTimer();
     clearSquares();
     for (i = 0; i < 4; i++) {
         spawnNew();
@@ -36,6 +37,7 @@ function gameOver() {
     console.log("GameOver");
     hideGame();
     clearExtraTaskInterval();
+    clearMoveTimer();
     clearSquares();
     showEndModal();
 }
@@ -57,7 +59,7 @@ function extraTask() {
 function extraTaskInterval() {
     return setInterval(function () {
         extraTask();
-    }, 100000);
+    }, 10000);
 }
 
 function clearExtraTaskInterval() {
@@ -175,6 +177,7 @@ function hideMaths() {
     $('#mathsProgressBar').css('width', '100%');
     extraTaskIsActive = false;
     console.log("INACTIVE");
+    restartMoveTimer();
 }
 
 function showMaths() {
@@ -183,6 +186,7 @@ function showMaths() {
     mathsCountdown();
     wobblyMaths();
     $('#mathsScreen').modal('show');
+    clearMoveTimer();
 }
 
 function showFinalScore() {

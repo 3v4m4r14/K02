@@ -1,6 +1,7 @@
 const mathsScreenAnimation = 'animated bounceIn';
 const movingSquareIndex = 3;
 const maxSquareCount = 9;
+var moveInterval;
 
 var squareList = [];
 $('#startBtn').click(function () {
@@ -15,6 +16,18 @@ $('#startBtn').click(function () {
     }
     startGame();
 });
+
+function clearMoveTimer() {
+    clearInterval(moveInterval);
+}
+
+function restartMoveTimer() {
+    clearMoveTimer();
+    moveInterval = setInterval(function() {
+        moveDown();
+        removeLife();
+    }, 2000);
+}
 
 function moveDown() {
     move('#mover')
@@ -38,6 +51,7 @@ function moveDown() {
         .end();
     spawnNew();
     clearSquaresOverflow();
+    restartMoveTimer();
 }
 
 function moveLeft() { // Red side
