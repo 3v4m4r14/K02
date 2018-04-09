@@ -19,12 +19,14 @@ $('.modal').on('shown.bs.modal', function () {
     $(this).find('[autofocus]').focus();
 });
 
+
 function startGame() {
     lives = 3;
     score = 0;
     correctAnswer = getRandomMathOperation();
     updateStats();
     showGame();
+    showSquareProgressBar();
     hideEndModal();
     restartExtraTaskInterval();
     restartMoveTimer();
@@ -43,6 +45,7 @@ function startGame() {
 function gameOver() {
     console.log("GameOver");
     hideGame();
+    hideSquareProgressBar();
     clearExtraTaskInterval();
     clearMoveTimer();
     stopAnnyang();
@@ -178,6 +181,14 @@ function hideGame() {
     $('#scoreScreen').css("visibility", "hidden");
 }
 
+function showSquareProgressBar() {
+    $('#squareProgressBarContainer').css("visibility", "visible");
+}
+
+function hideSquareProgressBar() {
+    $('#squareProgressBarContainer').css("visibility", "hidden");
+}
+
 function showEndModal() {
     showFinalScore();
     $('#endModalScreen').modal('show');
@@ -209,14 +220,14 @@ function showFinalScore() {
 }
 
 function mathsCountdown() {
-    setTimeout(function() {
+    setTimeout(function () {
         move('#mathsProgressBar')
             .set('width', '100%')
             .duration('0s')
             .then()
-                .set('width', '0%')
-                .duration(mathsResponseTimer)
-                .ease('linear')
+            .set('width', '0%')
+            .duration(mathsResponseTimer)
+            .ease('linear')
             .pop()
             .end();
     }, 1);
