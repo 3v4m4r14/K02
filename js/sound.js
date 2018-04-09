@@ -5,6 +5,7 @@ var mathsErrorSound = new Audio('sound/mathsError.wav');
 var mathsSuccessSound = new Audio('sound/success.wav');
 var backgroundMusic = new Audio('sound/underground.wav');
 backgroundMusic.loop = true;
+backgroundMusic.volume = 0.5;
 backgroundMusic.play();
 
 function changeBackgroundMusicStatus() {
@@ -56,6 +57,10 @@ function stopArrowSounds() {
     errorSound.currentTime = 0;
     endSound.pause();
     endSound.currentTime = 0;
+    mathsSuccessSound.pause();
+    mathsSuccessSound.currentTime = 0;
+    mathsErrorSound.pause();
+    mathsErrorSound.currentTime = 0;
 }
 
 function playSuccessSound() {
