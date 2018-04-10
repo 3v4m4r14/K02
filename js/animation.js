@@ -34,7 +34,7 @@ function restartMoveTimer() {
 
 function moveDown() {
     move('#mover')
-        .set('margin-top', '-700px')
+        .set('margin-top', '-750px')
         .duration('0s')
         .then()
             .add('margin-top', 100)
