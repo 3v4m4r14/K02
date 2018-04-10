@@ -39,6 +39,8 @@ function startGame() {
         checkAnswer();
     });
 
+    isChrome();
+
     startAnnyang();
 }
 
