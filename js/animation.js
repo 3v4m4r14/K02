@@ -1,11 +1,12 @@
 const mathsScreenAnimation = 'animated bounceIn';
 const movingSquareIndex = 3;
 const maxSquareCount = 9;
-const glowInterval = 2000;
+const glowInterval = 700;
 
 var moverTimer = 10000;
 var moveInterval;
 var glowIntervalObject;
+var glowTimeoutObject;
 
 
 var squareList = [];
@@ -38,7 +39,7 @@ function restartMoveTimer() {
 
 function moveDown() {
     move('#mover')
-        .set('margin-top', '-750px')
+        .set('margin-top', '-720px')
         .duration('0s')
         .then()
             .add('margin-top', 100)
@@ -62,34 +63,51 @@ function moveDown() {
     resetSquareProgressBar();
 }
 
-function restartArrowsGlow() {
-    clearInterval(glowIntervalObject);
-    glowIntervalObject = setInterval(function() {
-        glowArrows();
-    }, glowInterval);
-}
-
 function glowArrows() {
-    move('.leftBtn')
-        .set('-webkit-filter', 'drop-shadow(0 0 10px var(--red))')
-        .set('filter', 'drop-shadow(0 0 10px var(--red))')
-        .duration(glowInterval * 0.5)
-        .then()
-            .set('-webkit-filter', 'drop-shadow(0 0 20px var(--red))')
-            .set('filter', 'drop-shadow(0 0 20px var(--red))')
-            .duration(glowInterval * 0.5)
-        .pop()
+    clearInterval(glowIntervalObject);
+    clearTimeout(glowTimeoutObject);
+    move('#leftBtn')
+        .set('-webkit-filter', 'drop-shadow(0 0 20px var(--red))')
+        .set('filter', 'drop-shadow(0 0 20px var(--red))')
+        .set('border-right', '25px solid var(--red)')
+        .duration(glowInterval)
         .end();
-    move('.rightBtn')
-        .set('-webkit-filter', 'drop-shadow(0 0 10px var(--blue))')
-        .set('filter', 'drop-shadow(0 0 10px var(--blue))')
-        .duration(glowInterval * 0.5)
-        .then()
-            .set('-webkit-filter', 'drop-shadow(0 0 20px var(--blue))')
-            .set('filter', 'drop-shadow(0 0 20px var(--blue))')
-            .duration(glowInterval * 0.5)
-        .pop()
+    move('#rightBtn')
+        .set('-webkit-filter', 'drop-shadow(0 0 20px var(--blue))')
+        .set('filter', 'drop-shadow(0 0 20px var(--blue))')
+        .set('border-left', '25px solid var(--blue)')
+        .duration(glowInterval)
         .end();
+    
+    glowIntervalObject = setInterval(function(){
+        move('#leftBtn')
+            .set('-webkit-filter', 'drop-shadow(0 0 10px var(--dark-red))')
+            .set('filter', 'drop-shadow(0 0 10px var(--dark-red))')
+            .set('border-right', '25px solid var(--dark-red)')
+            .duration(glowInterval * 0.5)
+        .end();
+        move('#rightBtn')
+            .set('-webkit-filter', 'drop-shadow(0 0 10px var(--dark-blue))')
+            .set('filter', 'drop-shadow(0 0 10px var(--dark-blue))')
+            .set('border-left', '25px solid var(--dark-blue)')
+            .duration(glowInterval * 0.5)
+            .end();
+
+        glowTimeoutObject = setTimeout(function(){
+            move('#leftBtn')
+                .set('-webkit-filter', 'drop-shadow(0 0 20px var(--red))')
+                .set('filter', 'drop-shadow(0 0 20px var(--red))')
+                .set('border-right', '25px solid var(--red)')
+                .duration(glowInterval * 0.5)
+                .end();
+            move('#rightBtn')
+                .set('-webkit-filter', 'drop-shadow(0 0 20px var(--blue))')
+                .set('filter', 'drop-shadow(0 0 20px var(--blue))')
+                .set('border-left', '25px solid var(--blue)')
+                .duration(glowInterval * 0.5)
+                .end();
+        }, glowInterval * 0.5);
+    }, glowInterval);
 }
 
 function resetSquareProgressBar() {

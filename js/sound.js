@@ -7,6 +7,7 @@ var backgroundMusic = new Audio('sound/underground.wav');
 backgroundMusic.loop = true;
 backgroundMusic.volume = 0.5;
 backgroundMusic.play();
+changeBackgroundMusicStatus();
 
 function changeBackgroundMusicStatus() {
     var musicOn = document.getElementById('musicOn');

@@ -30,7 +30,7 @@ function startGame() {
     restartExtraTaskInterval();
     restartMoveTimer();
     resetSquareProgressBar();
-    restartArrowsGlow();
+    glowArrows();
     clearSquares();
     for (i = 0; i < 4; i++) {
         spawnNew();

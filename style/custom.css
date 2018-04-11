@@ -1,6 +1,8 @@
 :root {
     --red: #ff0000;
+    --dark-red: #a10000;
     --blue: #238aff;
+    --dark-blue: #16559c;
     --yellow: #fddb1c; 
     --purple: #6b1cfd; 
 }
@@ -93,8 +95,7 @@ html, body {
     border-top: 25px solid transparent;
     border-right: 25px solid var(--red);
     border-bottom: 25px solid transparent;
-    -webkit-filter: drop-shadow(0 0 10px var(--red));
-    filter: drop-shadow(0 0 10px var(--red));
+
     cursor: pointer;
     margin-top: 10%;
 }
@@ -105,8 +106,6 @@ html, body {
     border-top: 25px solid transparent;
     border-left: 25px solid var(--blue);
     border-bottom: 25px solid transparent;
-    -webkit-filter: drop-shadow(0 0 10px var(--blue));
-    filter: drop-shadow(0 0 10px var(--blue));
     cursor: pointer;
     margin-top: 10%;
 }
