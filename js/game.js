@@ -19,7 +19,6 @@ $('.modal').on('shown.bs.modal', function () {
     $(this).find('[autofocus]').focus();
 });
 
-
 function startGame() {
     lives = 3;
     score = 0;
@@ -31,6 +30,7 @@ function startGame() {
     restartExtraTaskInterval();
     restartMoveTimer();
     resetSquareProgressBar();
+    restartArrowsGlow();
     clearSquares();
     for (i = 0; i < 4; i++) {
         spawnNew();
@@ -40,7 +40,6 @@ function startGame() {
     });
 
     isChrome();
-
     startAnnyang();
 }
 

@@ -1,8 +1,12 @@
 const mathsScreenAnimation = 'animated bounceIn';
 const movingSquareIndex = 3;
 const maxSquareCount = 9;
+const glowInterval = 2000;
+
 var moverTimer = 10000;
 var moveInterval;
+var glowIntervalObject;
+
 
 var squareList = [];
 $('#startBtn').click(function () {
@@ -56,6 +60,36 @@ function moveDown() {
     clearSquaresOverflow();
     restartMoveTimer();
     resetSquareProgressBar();
+}
+
+function restartArrowsGlow() {
+    clearInterval(glowIntervalObject);
+    glowIntervalObject = setInterval(function() {
+        glowArrows();
+    }, glowInterval);
+}
+
+function glowArrows() {
+    move('.leftBtn')
+        .set('-webkit-filter', 'drop-shadow(0 0 10px var(--red))')
+        .set('filter', 'drop-shadow(0 0 10px var(--red))')
+        .duration(glowInterval * 0.5)
+        .then()
+            .set('-webkit-filter', 'drop-shadow(0 0 20px var(--red))')
+            .set('filter', 'drop-shadow(0 0 20px var(--red))')
+            .duration(glowInterval * 0.5)
+        .pop()
+        .end();
+    move('.rightBtn')
+        .set('-webkit-filter', 'drop-shadow(0 0 10px var(--blue))')
+        .set('filter', 'drop-shadow(0 0 10px var(--blue))')
+        .duration(glowInterval * 0.5)
+        .then()
+            .set('-webkit-filter', 'drop-shadow(0 0 20px var(--blue))')
+            .set('filter', 'drop-shadow(0 0 20px var(--blue))')
+            .duration(glowInterval * 0.5)
+        .pop()
+        .end();
 }
 
 function resetSquareProgressBar() {
