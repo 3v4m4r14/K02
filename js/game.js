@@ -202,10 +202,10 @@ function hideEndModal() {
 
 function hideMaths() {
     $('#mathsScreen').modal('hide');
-    extraTaskIsActive = false;
     console.log("INACTIVE");
     restartMoveTimer();
-    resetSquareProgressBar();
+    if (extraTaskIsActive) {resetSquareProgressBar();}
+    extraTaskIsActive = false;
 }
 
 function showMaths() {
