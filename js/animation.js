@@ -253,3 +253,14 @@ function flashingLife(curLife) {
     }, 10);
     console.log("flashing!");
 }
+
+function pulsingStart() {
+    var startBtnAnimation = 'animated pulse';
+    var startBtn = $('#startBtn');
+    startBtn.removeClass(startBtnAnimation);
+
+    setTimeout(function () {
+        startBtn.addClass(startBtnAnimation);
+    }, 50);
+    console.log("pulsing!");
+}

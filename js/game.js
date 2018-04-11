@@ -18,6 +18,9 @@ $('#rightBtn').click(function () {
 $('.modal').on('shown.bs.modal', function () {
     $(this).find('[autofocus]').focus();
 });
+var startBtnInterval = setInterval(function () {
+    pulsingStart();
+}, 1000);
 
 function startGame() {
     lives = 3;
@@ -32,6 +35,7 @@ function startGame() {
     resetSquareProgressBar();
     glowArrows();
     clearSquares();
+    clearInterval(startBtnInterval);
     for (i = 0; i < 4; i++) {
         spawnNew();
     }
@@ -69,8 +73,8 @@ function extraTask() {
         }, 1000);
         hasAnswer = false;
         hideMaths();
+        startAnnyang();
     }, mathsResponseTimer);
-    startAnnyang();
 }
 
 function extraTaskInterval() {
